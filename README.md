@@ -63,16 +63,7 @@ Create a local `.env` file (do not commit secrets):
 
 ```env
 GEMINI_API_KEY=your_key_here
-GEMINI_MODEL=gemini-1.5-flash
-PWAI_SINK_DSN=postgresql://pgwatch:pgwatchadmin@postgres:5432/pgwatch_metrics?sslmode=disable
-```
-
-Recommended committed template:
-
-```env
-# .env.example
-GEMINI_API_KEY=your_key_here
-GEMINI_MODEL=gemini-1.5-flash
+GEMINI_MODEL=gemini-2.5-flash
 PWAI_SINK_DSN=postgresql://pgwatch:pgwatchadmin@postgres:5432/pgwatch_metrics?sslmode=disable
 ```
 
@@ -111,17 +102,7 @@ Output currently includes:
 - analyzer findings with severity labels
 - evidence-oriented metric summary per database
 
-## Known Limitations
 
-- Some intent categories are recognized but still return placeholder responses (`summary`, `health_status`, `scans`, `explain`).
-- Metric schemas can vary by pgwatch setup; reader SQL handles common variants but may need extension for custom metric payloads.
-- The CLI currently prints plain text findings; advanced output modes and recommendation formatting are pending.
-
-## Security Notes
-
-- Never hardcode API keys in source files.
-- Keep secrets in `.env` or secret manager only.
-- Rotate exposed keys immediately if leaked.
 
 ## Roadmap (Planned Next)
 
@@ -130,8 +111,5 @@ Output currently includes:
 3. Add structured output formats (`json`) for integrations
 4. Add tests for classifier parsing, router behavior, and analyzer SQL paths
 
-## Project Scope
 
-This project is strictly focused on AI-assisted diagnostics over pgwatch metrics storage.
-It does not modify PostgreSQL source code and does not redesign pgwatch core internals.
 
